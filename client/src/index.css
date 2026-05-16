@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base Layer ────────────────────────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-surface-200 dark:border-surface-700;
+  }
+
+  body {
+    @apply bg-surface-50 text-surface-900 dark:bg-surface-950 dark:text-surface-100
+           font-sans transition-colors duration-200;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-300 dark:bg-surface-700 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-surface-400 dark:bg-surface-600;
+  }
+}
+
+/* ── Component Layer ──────────────────────────────────────────────── */
+@layer components {
+  /* ── Buttons ─────────────────────────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg text-sm font-medium
+           transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2
+           dark:focus:ring-offset-surface-900 disabled:opacity-50 disabled:cursor-not-allowed
+           active:scale-[0.98] cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply btn px-4 py-2.5
+           bg-brand-600 text-white hover:bg-brand-700
+           focus:ring-brand-500 shadow-sm shadow-brand-600/20
+           hover:shadow-md hover:shadow-brand-600/30;
+  }
+
+  .btn-secondary {
+    @apply btn px-4 py-2.5
+           bg-surface-100 text-surface-700 hover:bg-surface-200
+           dark:bg-surface-800 dark:text-surface-300 dark:hover:bg-surface-700
+           focus:ring-surface-400 border border-surface-200 dark:border-surface-700;
+  }
+
+  .btn-danger {
+    @apply btn px-4 py-2.5
+           bg-red-600 text-white hover:bg-red-700
+           focus:ring-red-500 shadow-sm shadow-red-600/20;
+  }
+
+  .btn-ghost {
+    @apply btn px-3 py-2
+           text-surface-600 dark:text-surface-400
+           hover:bg-surface-100 dark:hover:bg-surface-800
+           focus:ring-surface-400;
+  }
+
+  .btn-icon {
+    @apply btn p-2 rounded-lg
+           text-surface-500 dark:text-surface-400
+           hover:bg-surface-100 dark:hover:bg-surface-800
+           focus:ring-surface-400;
+  }
+
+  .btn-sm {
+    @apply text-xs px-3 py-1.5;
+  }
+
+  /* ── Form Controls ───────────────────────────────────────────── */
+  .input {
+    @apply block w-full rounded-lg border border-surface-300 dark:border-surface-600
+           bg-white dark:bg-surface-800/50 px-3.5 py-2.5 text-sm
+           text-surface-900 dark:text-surface-100
+           placeholder-surface-400 dark:placeholder-surface-500
+           focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20
+           focus:outline-none transition-all duration-200
+           shadow-sm;
+  }
+
+  .select {
+    @apply block rounded-lg border border-surface-300 dark:border-surface-600
+           bg-white dark:bg-surface-800/50 px-3.5 py-2.5 text-sm
+           text-surface-900 dark:text-surface-100
+           focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20
+           focus:outline-none transition-all duration-200
+           shadow-sm appearance-none cursor-pointer pr-10;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-surface-700 dark:text-surface-300 mb-1.5;
+  }
+
+  .textarea {
+    @apply input resize-none;
+  }
+
+  /* ── Cards ───────────────────────────────────────────────────── */
+  .card {
+    @apply bg-white dark:bg-surface-900 rounded-xl border border-surface-200
+           dark:border-surface-800 shadow-sm;
+  }
+
+  .card-glass {
+    @apply bg-white/70 dark:bg-surface-900/70 backdrop-blur-xl rounded-xl
+           border border-surface-200/50 dark:border-surface-700/50
+           shadow-lg shadow-surface-900/5;
+  }
+
+  /* ── Badges ──────────────────────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold
+           tracking-wide uppercase;
+  }
+
+  .badge-new {
+    @apply badge bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400
+           ring-1 ring-inset ring-blue-600/10 dark:ring-blue-500/20;
+  }
+
+  .badge-contacted {
+    @apply badge bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400
+           ring-1 ring-inset ring-amber-600/10 dark:ring-amber-500/20;
+  }
+
+  .badge-qualified {
+    @apply badge bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400
+           ring-1 ring-inset ring-emerald-600/10 dark:ring-emerald-500/20;
+  }
+
+  .badge-lost {
+    @apply badge bg-red-50 text-red-700 dark:bg-red-500/10 dark:text-red-400
+           ring-1 ring-inset ring-red-600/10 dark:ring-red-500/20;
+  }
+
+  .badge-source {
+    @apply badge bg-surface-100 text-surface-600 dark:bg-surface-800 dark:text-surface-400
+           ring-1 ring-inset ring-surface-200 dark:ring-surface-700;
+  }
+}
+
+/* ── Utilities Layer ──────────────────────────────────────────────── */
+@layer utilities {
+  .glass {
+    @apply bg-white/60 dark:bg-surface-900/60 backdrop-blur-xl
+           border border-white/20 dark:border-surface-700/30;
+  }
+
+  .gradient-brand {
+    @apply bg-gradient-to-r from-brand-600 via-brand-500 to-purple-500;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent gradient-brand;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
