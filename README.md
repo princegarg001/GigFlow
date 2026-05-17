@@ -242,6 +242,36 @@ docker-compose up --build
 
 ---
 
+## ☁️ Cloud Deployment
+
+This project uses a split deployment architecture (Vercel for Frontend, Render for Backend).
+
+### 1. Backend (Render / Railway)
+1. Push your code to GitHub.
+2. Create a **Web Service** on [Render](https://render.com).
+3. Connect your repository and configure:
+   * **Root Directory:** `server`
+   * **Environment:** `Node`
+   * **Build Command:** `npm install --include=dev && npm run build`
+   * **Start Command:** `npm start`
+4. Set Environment Variables:
+   * `PORT`: `5000`
+   * `MONGO_URI`: Your MongoDB Atlas Connection String
+   * `JWT_SECRET`: A secure random string
+   * `NODE_ENV`: `production`
+
+### 2. Frontend (Vercel)
+*(A `vercel.json` is already included for SPA routing)*
+1. Create a **New Project** on [Vercel](https://vercel.com).
+2. Connect your repository and configure:
+   * **Framework Preset:** `Vite`
+   * **Root Directory:** `client`
+3. Set Environment Variables:
+   * `VITE_API_URL`: Your live Render backend URL (e.g., `https://your-app.onrender.com/api`)
+4. Click **Deploy**.
+
+---
+
 ## 📁 Project Structure
 
 ```
